@@ -46,7 +46,7 @@
         "ProjectSettings/":true,
         // Modified
         "[Bb]uild/":true,
-        "[Ll]ibrary/":true,
+        // "[Ll]ibrary/":true,
         "[Oo]bj/":true,
         "[Tt]emp/":true,
         // "[Aa]ssets/[Ss]cenes": true,

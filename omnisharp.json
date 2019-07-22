@@ -51,5 +51,8 @@
     "NewLineForMembersInObjectInit": true,
     "NewLineForMembersInAnonymousTypes": true,
     "NewLineForClausesInQuery": true
+  },
+  "FileOptions": {
+    "systemExcludeSearchPatterns": ["**/InputMaster.cs", "./Library/*"]
   }
 }
