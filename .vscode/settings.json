@@ -53,7 +53,7 @@
         // Added
         "**/*.csproj": true,
         "**/*.sln": true,
-        "[Pp]ackages/": true,
+        // "[Pp]ackages/": true,
         "[Ll]ogs/": true
     }
 }
