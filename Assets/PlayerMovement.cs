@@ -23,12 +23,13 @@ public class PlayerMovement : MonoBehaviour
         if (change != Vector3.zero)
         {
             MoveCharacter();
-            Debug.Log("Tried to move");
+            // Debug.Log("Tried to move");
         }
     }
 
     void MoveCharacter()
     {
-        myRigidbody.MovePosition(transform.position + change * speed * Time.deltaTime);
+        Vector2 direction = transform.position + change * speed * Time.deltaTime;
+        myRigidbody.MovePosition(direction);
     }
 }
