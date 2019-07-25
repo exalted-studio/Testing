@@ -9570,7 +9570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0
+  m_LookaheadTime: 0.1
   m_LookaheadSmoothing: 10
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
@@ -9645,6 +9645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 205180217}
+  fireRate: 0
 --- !u!212 &1623332187
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9743,7 +9744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2988bddde4c85a48a3d018c4879bb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 15
 --- !u!61 &1623332191
 BoxCollider2D:
   m_ObjectHideFlags: 0

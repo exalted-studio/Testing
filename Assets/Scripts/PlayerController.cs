@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     // TODO: Make global somewhere?
     private int PIXEL_RATIO = 1080 / 270;
 
+    public float fireRate = 0;
+    float timeToFire;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,10 +20,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (fireRate == 0)
         {
-            Fire();
+            if (Input.GetMouseButtonDown(0))
+            {
+                Fire();
+            }
         }
+        else
+        {
+            if (Input.GetMouseButton(0) && Time.time > timeToFire)
+            {
+                timeToFire = Time.time + 1 / fireRate;
+                Fire();
+            }
+        }
+
     }
 
     void Fire()
@@ -31,6 +46,8 @@ public class PlayerController : MonoBehaviour
         // Ignore collision with player (remember to apply "Player" layer to Player)
         int layerMask = ~(LayerMask.GetMask("Player"));
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 100f, layerMask);
+
+        Debug.DrawLine(transform.position, dir.normalized * 100, Color.red);
 
         if (hit.collider != null)
         {
