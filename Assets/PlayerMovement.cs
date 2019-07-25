@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveCharacter()
     {
-        Vector2 direction = transform.position + change * speed * Time.deltaTime;
+        Vector2 direction = transform.position + change.normalized * speed * Time.deltaTime;
         myRigidbody.MovePosition(direction);
     }
 }
