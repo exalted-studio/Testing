@@ -41,10 +41,10 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
-        float aimSpread = 0.0f;
+        // float aimSpread = 0.0f;
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition / PIXEL_RATIO);
-        Vector2 dir = (mousePosition - transform.position) * Random.Range(-aimSpread, aimSpread);
+        Vector2 dir = (mousePosition - transform.position);
         Debug.Log(dir);
         // Ignore collision with player (remember to apply "Player" layer to Player)
         int layerMask = ~(LayerMask.GetMask("Player"));
