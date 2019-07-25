@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject bulletHole;
     public LineRenderer lineRenderer;
     Rigidbody2D rb;
 
@@ -40,12 +41,14 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition / PIXEL_RATIO);
-        Vector2 dir = (mousePosition - transform.position).normalized;
+        float aimSpread = 0.0f;
 
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition / PIXEL_RATIO);
+        Vector2 dir = (mousePosition - transform.position) * Random.Range(-aimSpread, aimSpread);
+        Debug.Log(dir);
         // Ignore collision with player (remember to apply "Player" layer to Player)
         int layerMask = ~(LayerMask.GetMask("Player"));
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 100f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir.normalized, 100f, layerMask);
 
         Debug.DrawLine(transform.position, dir.normalized * 100, Color.red);
 
@@ -54,6 +57,14 @@ public class PlayerController : MonoBehaviour
             lineRenderer.enabled = true;
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, hit.point);
+
+            // 0.25 - 1.25
+
+            // Vector2 bulletSpot = new Vector2(hit.point.x, hit.point.y + Random.Range(0.25f, 1.25f));
+            Vector2 bulletSpot = hit.point + (dir * Random.Range(1f, 4f));
+            Quaternion bulletRotation = Quaternion.Euler(0, 0, Random.Range(1, 4) * 90);
+
+            Instantiate(bulletHole, bulletSpot, Quaternion.identity);
         }
     }
 }
