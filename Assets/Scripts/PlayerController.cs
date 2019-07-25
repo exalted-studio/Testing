@@ -44,13 +44,13 @@ public class PlayerController : MonoBehaviour
         // float aimSpread = 0.0f;
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition / PIXEL_RATIO);
-        Vector2 dir = (mousePosition - transform.position);
+        Vector2 dir = (mousePosition - transform.position).normalized;
         Debug.Log(dir);
         // Ignore collision with player (remember to apply "Player" layer to Player)
         int layerMask = ~(LayerMask.GetMask("Player"));
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir.normalized, 100f, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, 100f, layerMask);
 
-        Debug.DrawLine(transform.position, dir.normalized * 100, Color.red);
+        Debug.DrawLine(transform.position, dir * 100, Color.red);
 
         if (hit.collider != null)
         {
